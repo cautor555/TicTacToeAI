@@ -10,6 +10,27 @@ public class Board
     Arrays.fill(boardState,'-');
   }
 
+  public Board(char[] c)
+  {
+    boardState = c.clone();
+    //Arrays.fill(boardState,'-');
+  }
+
+  public boolean compare(Board state)
+  {
+    for(int i = 0; i<boardState.length; i++)
+    {
+      if(boardState[i] != state.getSpot(i))
+        return false;
+    }
+    return true;
+  }
+
+  public char getSpot(int i)
+  {
+    return boardState[i];
+  }
+
   public String toString()
   {
     String S = "";
@@ -17,5 +38,16 @@ public class Board
       S += boardState[i];
     return S;
   }
+
+  public boolean contains(char c)
+  {
+    for(int i = 0; i<boardState.length; i++)
+    {
+      if(boardState[i] == c)
+        return true;
+    }
+    return false;
+  }
+
 
 }
