@@ -2,21 +2,20 @@ import java.util.*;
 
 public class Board
 {
-  private char[] boardState;
+  protected char[] boardState;
 
-  public Board()
+  protected Board()
   {
     boardState = new char[9];
     Arrays.fill(boardState,'-');
   }
 
-  public Board(char[] c)
+  protected Board(char[] c)
   {
     boardState = c.clone();
-    //Arrays.fill(boardState,'-');
   }
 
-  public boolean compare(Board state)
+  protected boolean compare(Board state)
   {
     for(int i = 0; i<boardState.length; i++)
     {
@@ -26,9 +25,21 @@ public class Board
     return true;
   }
 
-  public char getSpot(int i)
+  protected char getSpot(int i)
   {
     return boardState[i];
+  }
+
+  protected void makeMove(char c, int i)
+  {
+    boardState[i] = c;
+  }
+
+  protected Board returnMove(char c, int i)
+  {
+    Board makeBoardState = new Board(boardState.clone());
+    makeBoardState.makeMove(c, i);
+    return makeBoardState;
   }
 
   public String toString()
@@ -39,7 +50,17 @@ public class Board
     return S;
   }
 
-  public boolean contains(char c)
+  protected void printBoard()
+  {
+    for(int i = 0; i<boardState.length; i++)
+    {
+      if(i%3 == 0)
+        System.out.print("\n");
+      System.out.print(boardState[i]);
+    }
+  }
+
+  protected boolean contains(char c)
   {
     for(int i = 0; i<boardState.length; i++)
     {
@@ -48,6 +69,5 @@ public class Board
     }
     return false;
   }
-
 
 }
