@@ -3,6 +3,9 @@ public class MiniMax
   private final char BLANK_SPOT = '-';
   private final char PLAYER_CHAR;
   private final char COMPUTER_CHAR;
+  private final int PLAYERWIN = -1;
+  private final int COMPUTERWIN = 1;
+  private final int TIE = 0;
   private char value;
 
   public MiniMax()
@@ -23,11 +26,11 @@ public class MiniMax
     if(termTest(state))
     {
       if(value == COMPUTER_CHAR)
-        return 1;
+        return COMPUTERWIN;
       if(value == PLAYER_CHAR)
-        return -1;
+        return PLAYERWIN;
 
-      return 0;
+      return TIE;
     }
     else if(MaxPlayer)
     {
@@ -63,7 +66,7 @@ public class MiniMax
 
   }
 
-  public boolean termTest(Board state)
+  protected boolean termTest(Board state)
   {
     char centerSquare;
 
@@ -104,6 +107,11 @@ public class MiniMax
     }
 
     return false;
+  }
+
+  protected char getValue()
+  {
+    return value;
   }
 
 }

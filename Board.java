@@ -15,16 +15,6 @@ public class Board
     boardState = c.clone();
   }
 
-  protected boolean compare(Board state)
-  {
-    for(int i = 0; i<boardState.length; i++)
-    {
-      if(boardState[i] != state.getSpot(i))
-        return false;
-    }
-    return true;
-  }
-
   protected char getSpot(int i)
   {
     return boardState[i];
