@@ -1,3 +1,12 @@
+/**
+* Class name: MiniMax
+* Class to execute minimax algorithm on a tic tac toe board state
+*
+* @author  Christian Autor
+* @version 1.0
+* @since   3/30/2021
+*/
+
 public class MiniMax
 {
   private final char BLANK_SPOT = '-';
@@ -8,18 +17,36 @@ public class MiniMax
   private final int TIE = 0;
   private char value;
 
+/**
+  * MiniMax constructor
+  *
+  * @param  none
+  * @return none
+  */
   public MiniMax()
   {
     PLAYER_CHAR = 'O';
     COMPUTER_CHAR = 'X';
   }
 
+/**
+  * MiniMax constructor
+  *
+  * @param  char p, char c
+  * @return none
+  */
   public MiniMax(char p, char c)
   {
     PLAYER_CHAR = p;
     COMPUTER_CHAR = c;
   }
 
+/**
+  * miniMax method
+  *
+  * @param  Board state, boolean MaxPlayer
+  * @return int
+  */
   public int miniMax(Board state, boolean MaxPlayer)
   {
 
@@ -66,6 +93,12 @@ public class MiniMax
 
   }
 
+/**
+  * termTest method
+  *
+  * @param  Board state
+  * @return boolean
+  */
   protected boolean termTest(Board state)
   {
     char centerSquare;
@@ -109,6 +142,12 @@ public class MiniMax
     return false;
   }
 
+/**
+  * getValue method
+  *
+  * @param  none
+  * @return char
+  */
   protected char getValue()
   {
     return value;

@@ -1,3 +1,12 @@
+/**
+* Class name: Main
+* Main class for Tic Tac Toe project
+*
+* @author  Christian Autor
+* @version 1.0
+* @since   3/30/2021
+*/
+
 import java.util.*;
 
 public class Main
@@ -9,11 +18,17 @@ public class Main
     char computerChar;
     int turns;
 
-
     Scanner sc = new Scanner(System.in);
-    System.out.println("Chose 'X' or 'O' ");
 
-    if(Character.toUpperCase(sc.next().charAt(0)) == 'O')
+    playerChar = '-';
+
+    while(playerChar != 'O' && playerChar != 'X')
+    {
+      System.out.println("Chose 'X' or 'O' ");
+      playerChar = Character.toUpperCase(sc.next().charAt(0));
+    }
+
+    if(playerChar == 'O')
     {
       turns = 0;
       miniMax = new MiniMax();
@@ -30,10 +45,11 @@ public class Main
 
     Board ticTacToeBoard = new Board();
 
+    System.out.print("\n\nInitial board state: ");
+
     while(!miniMax.termTest(ticTacToeBoard))
     {
       ticTacToeBoard.printBoard();
-      System.out.print("\n");
 
       if(turns%2 == 0)
       {
@@ -54,20 +70,22 @@ public class Main
           }
         }
         ticTacToeBoard.makeMove(computerChar,maxValuePosition);
+
+        System.out.print("\n\nComputer move: ");
       }
 
       else
       {
-
-        System.out.println();
+        System.out.print("\n");
         int playerInput = -1;
-        while(playerInput < 1 || playerInput > 9)
+        while(playerInput < 1 || playerInput > 9 || ticTacToeBoard.getSpot(playerInput-1) != '-')
         {
-          System.out.println("Chose move (position 1-9) ");
+          System.out.println("\nChose move (position 1-9) ");
           playerInput = sc.nextInt();
         }
 
         ticTacToeBoard.makeMove(playerChar, playerInput-1);
+        System.out.print("\n\nYour move: ");
       }
       turns++;
     }
@@ -81,6 +99,5 @@ public class Main
       System.out.println("\n\nComputer Wins");
     else
       System.out.println("\n\nTie");
-
   }
 }
