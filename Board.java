@@ -19,7 +19,7 @@ public class Board
   * @param  none
   * @return none
   */
-  protected Board()
+  public Board()
   {
     boardState = new char[9];
     Arrays.fill(boardState,'-');
@@ -31,7 +31,7 @@ public class Board
   * @param  char c[]
   * @return none
   */
-  protected Board(char[] c)
+  public Board(char[] c)
   {
     boardState = c.clone();
   }
